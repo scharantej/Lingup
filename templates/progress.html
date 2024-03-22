@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress | Lipaksha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Progress</h1>
+</header>
+<main>
+<section>
+<h2>Languages</h2>
+{% for language in languages %}
+<div class="language">
+<h3>{{ language.name }}</h3>
+<p>Proficiency: {{ language.proficiency }}</p>
+{% for lesson in language.lessons %}
+<div class="lesson">
+<h4>{{ lesson.title }}</h4>
+<p>Progress: {{ lesson.progress }}%</p>
+</div>
+{% endfor %}
+</div>
+{% endfor %}
+</section>
+</main>
+<footer>
+<p>Copyright &copy; 2023 Lipaksha Language Learning</p>
+</footer>
+</body>
+</html>
+
