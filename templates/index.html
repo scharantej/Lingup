@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lipaksha Language Learning</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Lipaksha</h1>
+<p>Learn a new language for free.</p>
+</header>
+<nav>
+<ul>
+{% for language in languages %}
+<li><a href="{{ url_for('language', language_id=language.id) }}">{{ language.name }}</a></li>
+{% endfor %}
+</ul>
+</nav>
+<main>
+<section>
+<h2>Featured Languages</h2>
+{% for language in languages %}
+<div class="language">
+<h3>{{ language.name }}</h3>
+<p>{{ language.description }}</p>
+<a href="{{ url_for('language', language_id=language.id) }}">Learn More</a>
+</div>
+{% endfor %}
+</section>
+</main>
+<footer>
+<p>Copyright &copy; 2023 Lipaksha Language Learning</p>
+</footer>
+</body>
+</html>
+
+
