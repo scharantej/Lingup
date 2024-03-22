@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ language.name }} | Lipaksha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>{{ language.name }}</h1>
+<p>Your proficiency level: {{ language.proficiency }}</p>
+</header>
+<nav>
+<ul>
+<li><a href="{{ url_for('lesson', language_id=language.id, lesson_id=1) }}">Lessons</a></li>
+<li><a href="{{ url_for('exercise', language_id=language.id, exercise_id=1) }}">Exercises</a></li>
+<li><a href="{{ url_for('game', language_id=language.id, game_id=1) }}">Games</a></li>
+</ul>
+</nav>
+<main>
+<section>
+<h2>Lessons</h2>
+{% for lesson in lessons %}
+<div class="lesson">
+<h3>{{ lesson.title }}</h3>
+<p>{{ lesson.description }}</p>
+<a href="{{ url_for('lesson', language_id=language.id, lesson_id=lesson.id) }}">Start Lesson</a>
+</div>
+{% endfor %}
+</section>
+<section>
+<h2>Exercises</h2>
+{% for exercise in exercises %}
+<div class="exercise">
+<h3>{{ exercise.question }}</h3>
+<form action="{{ url_for('check_answer', language_id=language.id, exercise_id=exercise.id) }}" method="post">
+<input type="text" name="answer">
+<input type="submit" value="Submit">
+</form>
+</div>
+{% endfor %}
+</section>
+</main>
+<footer>
+<p>Copyright &copy; 2023 Lipaksha Language Learning</p>
+</footer>
+</body>
+</html>
+
+
